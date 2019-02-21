@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="/Users/frank/work/maven/chinaPnR/repo/com/oracle/ojdbc6/11.2.0.3/ojdbc6-11.2.0.3.jar"/>
+
+    <context id="context1" targetRuntime="MyBatis3" defaultModelType="flat">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@192.168.4.228:1521:testdb" userId="acctdb"
+                        password="acctdb"/>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.huifu.odin.dal.entity"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.huifu.odin.dal.mapper"
+                         targetProject="src/main/resources"/>
+
+        <!-- 生成xml文件 -->
+        <!--<javaClientGenerator targetPackage="com.huifu.odin.dal.mapper" targetProject="src/main/java" type="XMLMAPPER"/>-->
+
+        <!-- 生成annotated -->
+        <!--<javaClientGenerator targetPackage="com.huifu.odin.dal.mapper" targetProject="src/main/java" type="ANNOTATEDMAPPER"/>-->
+
+        <!-- XML和注解的混合形式，(上面这种情况中的)SqlProvider注解方法会被XML替代-->
+        <javaClientGenerator targetPackage="com.huifu.odin.dal.mapper" targetProject="src/main/java" type="MIXEDMAPPER"/>
+
+
+        <table tableName="FRT_DTL_LOG" domainObjectName="FrtDtlLog"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+
+    </context>
+</generatorConfiguration>

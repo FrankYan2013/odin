@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huifu.odin.dal.mapper.TransTypeMapper">
+  <resultMap id="BaseResultMap" type="com.huifu.odin.dal.entity.TransType">
+    <id column="TRANS_TYPE" jdbcType="CHAR" property="transType" />
+    <result column="DC_FLAG" jdbcType="CHAR" property="dcFlag" />
+    <result column="TRANS_DESC" jdbcType="VARCHAR" property="transDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TRANS_TYPE, DC_FLAG, TRANS_DESC
+  </sql>
+  <insert id="insertSelective" parameterType="com.huifu.odin.dal.entity.TransType">
+    insert into TRANS_TYPE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="transType != null">
+        TRANS_TYPE,
+      </if>
+      <if test="dcFlag != null">
+        DC_FLAG,
+      </if>
+      <if test="transDesc != null">
+        TRANS_DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="transType != null">
+        #{transType,jdbcType=CHAR},
+      </if>
+      <if test="dcFlag != null">
+        #{dcFlag,jdbcType=CHAR},
+      </if>
+      <if test="transDesc != null">
+        #{transDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huifu.odin.dal.entity.TransType">
+    update TRANS_TYPE
+    <set>
+      <if test="dcFlag != null">
+        DC_FLAG = #{dcFlag,jdbcType=CHAR},
+      </if>
+      <if test="transDesc != null">
+        TRANS_DESC = #{transDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TRANS_TYPE = #{transType,jdbcType=CHAR}
+  </update>
+
+</mapper>

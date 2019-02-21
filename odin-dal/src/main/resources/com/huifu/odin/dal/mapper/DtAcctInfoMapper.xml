@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huifu.odin.dal.mapper.DtAcctInfoMapper">
+    <resultMap id="BaseResultMap" type="com.huifu.odin.dal.entity.DtAcctInfo">
+        <id column="CUST_ID" jdbcType="VARCHAR" property="custId"/>
+        <id column="SUB_ACCT_ID" jdbcType="VARCHAR" property="subAcctId"/>
+        <result column="CAP_TYPE" jdbcType="VARCHAR" property="capType"/>
+        <result column="CURY_TYPE" jdbcType="VARCHAR" property="curyType"/>
+        <result column="ACCT_TYPE" jdbcType="VARCHAR" property="acctType"/>
+        <result column="ACCT_NAME" jdbcType="VARCHAR" property="acctName"/>
+        <result column="CUST_INFO" jdbcType="VARCHAR" property="custInfo"/>
+        <result column="ACCT_STATUS" jdbcType="CHAR" property="acctStatus"/>
+        <result column="AVL_BAL" jdbcType="DECIMAL" property="avlBal"/>
+        <result column="FRZ_BAL" jdbcType="DECIMAL" property="frzBal"/>
+        <result column="ACCT_BAL" jdbcType="DECIMAL" property="acctBal"/>
+        <result column="LAST_UPD_DATE" jdbcType="CHAR" property="lastUpdDate"/>
+        <result column="LAST_AVL_BAL" jdbcType="DECIMAL" property="lastAvlBal"/>
+        <result column="LAST_FRZ_BAL" jdbcType="DECIMAL" property="lastFrzBal"/>
+        <result column="TODAY_AVL_BAL" jdbcType="DECIMAL" property="todayAvlBal"/>
+        <result column="TODAY_FRZ_BAL" jdbcType="DECIMAL" property="todayFrzBal"/>
+        <result column="INT_BAL" jdbcType="DECIMAL" property="intBal"/>
+        <result column="LAST_INT_DATE" jdbcType="CHAR" property="lastIntDate"/>
+        <result column="SYS_ID" jdbcType="VARCHAR" property="sysId"/>
+        <result column="BDEP_ID" jdbcType="VARCHAR" property="bdepId"/>
+        <result column="OPEN_DATE" jdbcType="CHAR" property="openDate"/>
+        <result column="OPEN_TIME" jdbcType="CHAR" property="openTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    CUST_ID, SUB_ACCT_ID, CAP_TYPE, CURY_TYPE, ACCT_TYPE, ACCT_NAME, CUST_INFO, ACCT_STATUS, 
+    AVL_BAL, FRZ_BAL, ACCT_BAL, LAST_UPD_DATE, LAST_AVL_BAL, LAST_FRZ_BAL, TODAY_AVL_BAL, 
+    TODAY_FRZ_BAL, INT_BAL, LAST_INT_DATE, SYS_ID, BDEP_ID, OPEN_DATE, OPEN_TIME
+  </sql>
+    <insert id="insertSelective" parameterType="com.huifu.odin.dal.entity.DtAcctInfo">
+        insert into DT_ACCT_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="custId != null">
+                CUST_ID,
+            </if>
+            <if test="subAcctId != null">
+                SUB_ACCT_ID,
+            </if>
+            <if test="capType != null">
+                CAP_TYPE,
+            </if>
+            <if test="curyType != null">
+                CURY_TYPE,
+            </if>
+            <if test="acctType != null">
+                ACCT_TYPE,
+            </if>
+            <if test="acctName != null">
+                ACCT_NAME,
+            </if>
+            <if test="custInfo != null">
+                CUST_INFO,
+            </if>
+            <if test="acctStatus != null">
+                ACCT_STATUS,
+            </if>
+            <if test="avlBal != null">
+                AVL_BAL,
+            </if>
+            <if test="frzBal != null">
+                FRZ_BAL,
+            </if>
+            <if test="acctBal != null">
+                ACCT_BAL,
+            </if>
+            <if test="lastUpdDate != null">
+                LAST_UPD_DATE,
+            </if>
+            <if test="lastAvlBal != null">
+                LAST_AVL_BAL,
+            </if>
+            <if test="lastFrzBal != null">
+                LAST_FRZ_BAL,
+            </if>
+            <if test="todayAvlBal != null">
+                TODAY_AVL_BAL,
+            </if>
+            <if test="todayFrzBal != null">
+                TODAY_FRZ_BAL,
+            </if>
+            <if test="intBal != null">
+                INT_BAL,
+            </if>
+            <if test="lastIntDate != null">
+                LAST_INT_DATE,
+            </if>
+            <if test="sysId != null">
+                SYS_ID,
+            </if>
+            <if test="bdepId != null">
+                BDEP_ID,
+            </if>
+            <if test="openDate != null">
+                OPEN_DATE,
+            </if>
+            <if test="openTime != null">
+                OPEN_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="custId != null">
+                #{custId,jdbcType=VARCHAR},
+            </if>
+            <if test="subAcctId != null">
+                #{subAcctId,jdbcType=VARCHAR},
+            </if>
+            <if test="capType != null">
+                #{capType,jdbcType=VARCHAR},
+            </if>
+            <if test="curyType != null">
+                #{curyType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctType != null">
+                #{acctType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctName != null">
+                #{acctName,jdbcType=VARCHAR},
+            </if>
+            <if test="custInfo != null">
+                #{custInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="acctStatus != null">
+                #{acctStatus,jdbcType=CHAR},
+            </if>
+            <if test="avlBal != null">
+                #{avlBal,jdbcType=DECIMAL},
+            </if>
+            <if test="frzBal != null">
+                #{frzBal,jdbcType=DECIMAL},
+            </if>
+            <if test="acctBal != null">
+                #{acctBal,jdbcType=DECIMAL},
+            </if>
+            <if test="lastUpdDate != null">
+                #{lastUpdDate,jdbcType=CHAR},
+            </if>
+            <if test="lastAvlBal != null">
+                #{lastAvlBal,jdbcType=DECIMAL},
+            </if>
+            <if test="lastFrzBal != null">
+                #{lastFrzBal,jdbcType=DECIMAL},
+            </if>
+            <if test="todayAvlBal != null">
+                #{todayAvlBal,jdbcType=DECIMAL},
+            </if>
+            <if test="todayFrzBal != null">
+                #{todayFrzBal,jdbcType=DECIMAL},
+            </if>
+            <if test="intBal != null">
+                #{intBal,jdbcType=DECIMAL},
+            </if>
+            <if test="lastIntDate != null">
+                #{lastIntDate,jdbcType=CHAR},
+            </if>
+            <if test="sysId != null">
+                #{sysId,jdbcType=VARCHAR},
+            </if>
+            <if test="bdepId != null">
+                #{bdepId,jdbcType=VARCHAR},
+            </if>
+            <if test="openDate != null">
+                #{openDate,jdbcType=CHAR},
+            </if>
+            <if test="openTime != null">
+                #{openTime,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huifu.odin.dal.entity.DtAcctInfo">
+        update DT_ACCT_INFO
+        <set>
+            <if test="capType != null">
+                CAP_TYPE = #{capType,jdbcType=VARCHAR},
+            </if>
+            <if test="curyType != null">
+                CURY_TYPE = #{curyType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctType != null">
+                ACCT_TYPE = #{acctType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctName != null">
+                ACCT_NAME = #{acctName,jdbcType=VARCHAR},
+            </if>
+            <if test="custInfo != null">
+                CUST_INFO = #{custInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="acctStatus != null">
+                ACCT_STATUS = #{acctStatus,jdbcType=CHAR},
+            </if>
+            <if test="avlBal != null">
+                AVL_BAL = #{avlBal,jdbcType=DECIMAL},
+            </if>
+            <if test="frzBal != null">
+                FRZ_BAL = #{frzBal,jdbcType=DECIMAL},
+            </if>
+            <if test="acctBal != null">
+                ACCT_BAL = #{acctBal,jdbcType=DECIMAL},
+            </if>
+            <if test="lastUpdDate != null">
+                LAST_UPD_DATE = #{lastUpdDate,jdbcType=CHAR},
+            </if>
+            <if test="lastAvlBal != null">
+                LAST_AVL_BAL = #{lastAvlBal,jdbcType=DECIMAL},
+            </if>
+            <if test="lastFrzBal != null">
+                LAST_FRZ_BAL = #{lastFrzBal,jdbcType=DECIMAL},
+            </if>
+            <if test="todayAvlBal != null">
+                TODAY_AVL_BAL = #{todayAvlBal,jdbcType=DECIMAL},
+            </if>
+            <if test="todayFrzBal != null">
+                TODAY_FRZ_BAL = #{todayFrzBal,jdbcType=DECIMAL},
+            </if>
+            <if test="intBal != null">
+                INT_BAL = #{intBal,jdbcType=DECIMAL},
+            </if>
+            <if test="lastIntDate != null">
+                LAST_INT_DATE = #{lastIntDate,jdbcType=CHAR},
+            </if>
+            <if test="sysId != null">
+                SYS_ID = #{sysId,jdbcType=VARCHAR},
+            </if>
+            <if test="bdepId != null">
+                BDEP_ID = #{bdepId,jdbcType=VARCHAR},
+            </if>
+            <if test="openDate != null">
+                OPEN_DATE = #{openDate,jdbcType=CHAR},
+            </if>
+            <if test="openTime != null">
+                OPEN_TIME = #{openTime,jdbcType=CHAR},
+            </if>
+        </set>
+        where CUST_ID = #{custId,jdbcType=VARCHAR}
+        and SUB_ACCT_ID = #{subAcctId,jdbcType=VARCHAR}
+    </update>
+
+
+    <select id="queryDtAcctInfo" resultMap="BaseResultMap" parameterType="com.huifu.odin.dal.entity.DtAcctInfo">
+        select
+        <include refid="Base_Column_List"/>
+        from DT_ACCT_INFO
+        <where>
+            <if test="acctInfo.custId !='' and acctInfo.custId !=null">
+                AND CUST_ID = #{acctInfo.custId}
+            </if>
+
+            <if test="acctInfo.subAcctId != '' and acctInfo.subAcctId != null">
+                AND SUB_ACCT_ID = #{acctInfo.subAcctId}
+            </if>
+
+            <if test="acctInfo.acctType != '' and acctInfo.acctType != null">
+                AND ACCT_TYPE = #{acctInfo.acctType}
+            </if>
+        </where>
+    </select>
+
+</mapper>

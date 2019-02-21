@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huifu.odin.dal.mapper.AcctLogMapper">
+    <resultMap id="BaseResultMap" type="com.huifu.odin.dal.entity.AcctLog">
+        <id column="ACCT_DATE" jdbcType="CHAR" property="acctDate"/>
+        <id column="ACCT_SEQ_ID" jdbcType="VARCHAR" property="acctSeqId"/>
+        <result column="TRANS_TYPE" jdbcType="CHAR" property="transType"/>
+        <result column="CUST_ID" jdbcType="VARCHAR" property="custId"/>
+        <result column="SUB_ACCT_ID" jdbcType="VARCHAR" property="subAcctId"/>
+        <result column="ACCT_TYPE" jdbcType="VARCHAR" property="acctType"/>
+        <result column="ACCT_NAME" jdbcType="VARCHAR" property="acctName"/>
+        <result column="CUST_INFO" jdbcType="VARCHAR" property="custInfo"/>
+        <result column="SYS_TIME" jdbcType="CHAR" property="sysTime"/>
+        <result column="DC_FLAG" jdbcType="CHAR" property="dcFlag"/>
+        <result column="TRANS_AMT" jdbcType="VARCHAR" property="transAmt"/>
+        <result column="FEE_AMT" jdbcType="VARCHAR" property="feeAmt"/>
+        <result column="ACCT_BAL" jdbcType="VARCHAR" property="acctBal"/>
+        <result column="CUST_ID2" jdbcType="VARCHAR" property="custId2"/>
+        <result column="SYS_ID" jdbcType="VARCHAR" property="sysId"/>
+        <result column="BDEP_ID" jdbcType="VARCHAR" property="bdepId"/>
+        <result column="TRANS_NAME" jdbcType="VARCHAR" property="transName"/>
+        <result column="TRANS_OBJ" jdbcType="VARCHAR" property="transObj"/>
+        <result column="FRT_TXN_ID1" jdbcType="VARCHAR" property="frtTxnId1"/>
+        <result column="FRT_TXN_ID2" jdbcType="VARCHAR" property="frtTxnId2"/>
+        <result column="FRT_TXN_ID3" jdbcType="VARCHAR" property="frtTxnId3"/>
+        <result column="FRT_DATE" jdbcType="CHAR" property="frtDate"/>
+        <result column="FRT_SEQ_ID" jdbcType="VARCHAR" property="frtSeqId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ACCT_DATE, ACCT_SEQ_ID, TRANS_TYPE, CUST_ID, SUB_ACCT_ID, ACCT_TYPE, ACCT_NAME, CUST_INFO, 
+    SYS_TIME, DC_FLAG, TRANS_AMT, FEE_AMT, ACCT_BAL, CUST_ID2, SYS_ID, BDEP_ID, TRANS_NAME, 
+    TRANS_OBJ, FRT_TXN_ID1, FRT_TXN_ID2, FRT_TXN_ID3, FRT_DATE, FRT_SEQ_ID
+  </sql>
+    <insert id="insertSelective" parameterType="com.huifu.odin.dal.entity.AcctLog">
+        <selectKey keyProperty="acctSeqId" order="BEFORE" resultType="java.lang.String">
+            select lpad(ACCT_LOG_SEQ.nextval,10,0) id from dual
+        </selectKey>
+        insert into ACCT_LOG
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="acctDate != null">
+                ACCT_DATE,
+            </if>
+            ACCT_SEQ_ID,
+            <if test="transType != null">
+                TRANS_TYPE,
+            </if>
+            <if test="custId != null">
+                CUST_ID,
+            </if>
+            <if test="subAcctId != null">
+                SUB_ACCT_ID,
+            </if>
+            <if test="acctType != null">
+                ACCT_TYPE,
+            </if>
+            <if test="acctName != null">
+                ACCT_NAME,
+            </if>
+            <if test="custInfo != null">
+                CUST_INFO,
+            </if>
+            <if test="sysTime != null">
+                SYS_TIME,
+            </if>
+            <if test="dcFlag != null">
+                DC_FLAG,
+            </if>
+            <if test="transAmt != null">
+                TRANS_AMT,
+            </if>
+            <if test="feeAmt != null">
+                FEE_AMT,
+            </if>
+            <if test="acctBal != null">
+                ACCT_BAL,
+            </if>
+            <if test="custId2 != null">
+                CUST_ID2,
+            </if>
+            <if test="sysId != null">
+                SYS_ID,
+            </if>
+            <if test="bdepId != null">
+                BDEP_ID,
+            </if>
+            <if test="transName != null">
+                TRANS_NAME,
+            </if>
+            <if test="transObj != null">
+                TRANS_OBJ,
+            </if>
+            <if test="frtTxnId1 != null">
+                FRT_TXN_ID1,
+            </if>
+            <if test="frtTxnId2 != null">
+                FRT_TXN_ID2,
+            </if>
+            <if test="frtTxnId3 != null">
+                FRT_TXN_ID3,
+            </if>
+            <if test="frtDate != null">
+                FRT_DATE,
+            </if>
+            <if test="frtSeqId != null">
+                FRT_SEQ_ID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="acctDate != null">
+                #{acctDate,jdbcType=CHAR},
+            </if>
+            #{acctSeqId,jdbcType=VARCHAR},
+            <if test="transType != null">
+                #{transType,jdbcType=CHAR},
+            </if>
+            <if test="custId != null">
+                #{custId,jdbcType=VARCHAR},
+            </if>
+            <if test="subAcctId != null">
+                #{subAcctId,jdbcType=VARCHAR},
+            </if>
+            <if test="acctType != null">
+                #{acctType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctName != null">
+                #{acctName,jdbcType=VARCHAR},
+            </if>
+            <if test="custInfo != null">
+                #{custInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="sysTime != null">
+                #{sysTime,jdbcType=CHAR},
+            </if>
+            <if test="dcFlag != null">
+                #{dcFlag,jdbcType=CHAR},
+            </if>
+            <if test="transAmt != null">
+                #{transAmt,jdbcType=VARCHAR},
+            </if>
+            <if test="feeAmt != null">
+                #{feeAmt,jdbcType=VARCHAR},
+            </if>
+            <if test="acctBal != null">
+                #{acctBal,jdbcType=VARCHAR},
+            </if>
+            <if test="custId2 != null">
+                #{custId2,jdbcType=VARCHAR},
+            </if>
+            <if test="sysId != null">
+                #{sysId,jdbcType=VARCHAR},
+            </if>
+            <if test="bdepId != null">
+                #{bdepId,jdbcType=VARCHAR},
+            </if>
+            <if test="transName != null">
+                #{transName,jdbcType=VARCHAR},
+            </if>
+            <if test="transObj != null">
+                #{transObj,jdbcType=VARCHAR},
+            </if>
+            <if test="frtTxnId1 != null">
+                #{frtTxnId1,jdbcType=VARCHAR},
+            </if>
+            <if test="frtTxnId2 != null">
+                #{frtTxnId2,jdbcType=VARCHAR},
+            </if>
+            <if test="frtTxnId3 != null">
+                #{frtTxnId3,jdbcType=VARCHAR},
+            </if>
+            <if test="frtDate != null">
+                #{frtDate,jdbcType=CHAR},
+            </if>
+            <if test="frtSeqId != null">
+                #{frtSeqId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.huifu.odin.dal.entity.AcctLog">
+        update ACCT_LOG
+        <set>
+            <if test="transType != null">
+                TRANS_TYPE = #{transType,jdbcType=CHAR},
+            </if>
+            <if test="custId != null">
+                CUST_ID = #{custId,jdbcType=VARCHAR},
+            </if>
+            <if test="subAcctId != null">
+                SUB_ACCT_ID = #{subAcctId,jdbcType=VARCHAR},
+            </if>
+            <if test="acctType != null">
+                ACCT_TYPE = #{acctType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctName != null">
+                ACCT_NAME = #{acctName,jdbcType=VARCHAR},
+            </if>
+            <if test="custInfo != null">
+                CUST_INFO = #{custInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="sysTime != null">
+                SYS_TIME = #{sysTime,jdbcType=CHAR},
+            </if>
+            <if test="dcFlag != null">
+                DC_FLAG = #{dcFlag,jdbcType=CHAR},
+            </if>
+            <if test="transAmt != null">
+                TRANS_AMT = #{transAmt,jdbcType=VARCHAR},
+            </if>
+            <if test="feeAmt != null">
+                FEE_AMT = #{feeAmt,jdbcType=VARCHAR},
+            </if>
+            <if test="acctBal != null">
+                ACCT_BAL = #{acctBal,jdbcType=VARCHAR},
+            </if>
+            <if test="custId2 != null">
+                CUST_ID2 = #{custId2,jdbcType=VARCHAR},
+            </if>
+            <if test="sysId != null">
+                SYS_ID = #{sysId,jdbcType=VARCHAR},
+            </if>
+            <if test="bdepId != null">
+                BDEP_ID = #{bdepId,jdbcType=VARCHAR},
+            </if>
+            <if test="transName != null">
+                TRANS_NAME = #{transName,jdbcType=VARCHAR},
+            </if>
+            <if test="transObj != null">
+                TRANS_OBJ = #{transObj,jdbcType=VARCHAR},
+            </if>
+            <if test="frtTxnId1 != null">
+                FRT_TXN_ID1 = #{frtTxnId1,jdbcType=VARCHAR},
+            </if>
+            <if test="frtTxnId2 != null">
+                FRT_TXN_ID2 = #{frtTxnId2,jdbcType=VARCHAR},
+            </if>
+            <if test="frtTxnId3 != null">
+                FRT_TXN_ID3 = #{frtTxnId3,jdbcType=VARCHAR},
+            </if>
+            <if test="frtDate != null">
+                FRT_DATE = #{frtDate,jdbcType=CHAR},
+            </if>
+            <if test="frtSeqId != null">
+                FRT_SEQ_ID = #{frtSeqId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ACCT_DATE = #{acctDate,jdbcType=CHAR}
+        and ACCT_SEQ_ID = #{acctSeqId,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectAcctLogByPage" parameterType="com.huifu.odin.dal.entity.QueryAcctLogParam"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ACCT_LOG
+        <where>
+            <if test="queryAcctLogParam.beginAcctDate!=null  and  queryAcctLogParam.beginAcctDate!='' ">
+                AND (ACCT_DATE is not null and
+                <![CDATA[ACCT_DATE >=#{queryAcctLogParam.beginAcctDate,jdbcType=VARCHAR}]]>)
+            </if>
+            <if test="queryAcctLogParam.endAcctDate!=null  and  queryAcctLogParam.endAcctDate!='' ">
+                AND (ACCT_DATE is not null and <![CDATA[ACCT_DATE<=#{queryAcctLogParam.endAcctDate,jdbcType=VARCHAR}]]>)
+            </if>
+
+            <if test="queryAcctLogParam.custId != null">
+                and CUST_ID = #{queryAcctLogParam.custId}
+            </if>
+            <if test="queryAcctLogParam.subAcctId != null">
+                and SUB_ACCT_ID = #{queryAcctLogParam.subAcctId}
+            </if>
+            <if test="queryAcctLogParam.acctSeqId != null">
+                and ACCT_SEQ_ID = #{queryAcctLogParam.acctSeqId}
+            </if>
+            <if test="queryAcctLogParam.transType != null">
+                and TRANS_TYPE = #{queryAcctLogParam.transType}
+            </if>
+            <if test="queryAcctLogParam.acctType != null">
+                and ACCT_TYPE = #{queryAcctLogParam.acctType}
+            </if>
+        </where>
+
+        <if test="queryAcctLogParam.transTypes != null">
+            and TRANS_TYPE in
+            <foreach item="type" collection="queryAcctLogParam.transTypes" open="("
+                     separator="," close=")">
+                #{type}
+            </foreach>
+        </if>
+        Order by ACCT_DATE DESC, ACCT_SEQ_ID DESC
+    </select>
+
+    <insert id="insertList">
+        INSERT INTO ACCT_LOG (ACCT_DATE, ACCT_SEQ_ID,
+        TRANS_TYPE, CUST_ID,
+        SUB_ACCT_ID, ACCT_TYPE,
+        ACCT_NAME, CUST_INFO,
+        SYS_TIME, DC_FLAG, TRANS_AMT,
+        FEE_AMT, ACCT_BAL,
+        CUST_ID2, SYS_ID,
+        BDEP_ID, TRANS_NAME,
+        TRANS_OBJ, FRT_TXN_ID1,
+        FRT_TXN_ID2, FRT_TXN_ID3,
+        FRT_DATE, FRT_SEQ_ID)
+        select ACCT_DATE, ACCT_SEQ_ID , TRANS_TYPE, CUST_ID, SUB_ACCT_ID, ACCT_TYPE, ACCT_NAME, CUST_INFO,
+        SYS_TIME, DC_FLAG, TRANS_AMT, FEE_AMT, ACCT_BAL, CUST_ID2, SYS_ID, BDEP_ID, TRANS_NAME,
+        TRANS_OBJ, FRT_TXN_ID1, FRT_TXN_ID2, FRT_TXN_ID3, FRT_DATE, FRT_SEQ_ID from(
+        <foreach collection='records' item='item' index='index' separator='UNION ALL'>
+            SELECT #{item.acctDate,jdbcType=CHAR} as ACCT_DATE,#{item.acctSeqId,jdbcType=CHAR} as ACCT_SEQ_ID,
+            #{item.transType,jdbcType=CHAR} as TRANS_TYPE, #{item.custId,jdbcType=VARCHAR} as CUST_ID,
+            #{item.subAcctId,jdbcType=VARCHAR} as SUB_ACCT_ID, #{item.acctType,jdbcType=VARCHAR} as ACCT_TYPE,
+            #{item.acctName,jdbcType=VARCHAR} as ACCT_NAME, #{item.custInfo,jdbcType=VARCHAR} as CUST_INFO,
+            #{item.sysTime,jdbcType=CHAR} as SYS_TIME, #{item.dcFlag,jdbcType=CHAR} as DC_FLAG, #{item.transAmt,jdbcType=VARCHAR} as TRANS_AMT,
+            #{item.feeAmt,jdbcType=VARCHAR} as FEE_AMT, #{item.acctBal,jdbcType=VARCHAR} as ACCT_BAL,
+            #{item.custId2,jdbcType=VARCHAR} as CUST_ID2, #{item.sysId,jdbcType=VARCHAR} as SYS_ID,
+            #{item.bdepId,jdbcType=VARCHAR} as BDEP_ID, #{item.transName,jdbcType=VARCHAR} as TRANS_NAME,
+            #{item.transObj,jdbcType=VARCHAR} as TRANS_OBJ, #{item.frtTxnId1,jdbcType=VARCHAR} as FRT_TXN_ID1,
+            #{item.frtTxnId2,jdbcType=VARCHAR} as FRT_TXN_ID2, #{item.frtTxnId3,jdbcType=VARCHAR} as FRT_TXN_ID3,
+            #{item.frtDate,jdbcType=CHAR} as FRT_DATE, #{item.frtSeqId,jdbcType=VARCHAR} as FRT_SEQ_ID FROM DUAL
+        </foreach>
+        )
+    </insert>
+</mapper>

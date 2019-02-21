@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huifu.odin.dal.repository.DtAcctInfoRepository">
+    <resultMap id="BaseResultMap" type="com.huifu.odin.dal.entity.DtAcctInfo">
+        <id column="CUST_ID" jdbcType="VARCHAR" property="custId"/>
+        <id column="SUB_ACCT_ID" jdbcType="VARCHAR" property="subAcctId"/>
+        <result column="CAP_TYPE" jdbcType="VARCHAR" property="capType"/>
+        <result column="CURY_TYPE" jdbcType="VARCHAR" property="curyType"/>
+        <result column="ACCT_TYPE" jdbcType="VARCHAR" property="acctType"/>
+        <result column="ACCT_NAME" jdbcType="VARCHAR" property="acctName"/>
+        <result column="CUST_INFO" jdbcType="VARCHAR" property="custInfo"/>
+        <result column="ACCT_STATUS" jdbcType="CHAR" property="acctStatus"/>
+        <result column="AVL_BAL" jdbcType="DECIMAL" property="avlBal"/>
+        <result column="FRZ_BAL" jdbcType="DECIMAL" property="frzBal"/>
+        <result column="ACCT_BAL" jdbcType="DECIMAL" property="acctBal"/>
+        <result column="LAST_UPD_DATE" jdbcType="CHAR" property="lastUpdDate"/>
+        <result column="LAST_AVL_BAL" jdbcType="DECIMAL" property="lastAvlBal"/>
+        <result column="LAST_FRZ_BAL" jdbcType="DECIMAL" property="lastFrzBal"/>
+        <result column="TODAY_AVL_BAL" jdbcType="DECIMAL" property="todayAvlBal"/>
+        <result column="TODAY_FRZ_BAL" jdbcType="DECIMAL" property="todayFrzBal"/>
+        <result column="INT_BAL" jdbcType="DECIMAL" property="intBal"/>
+        <result column="LAST_INT_DATE" jdbcType="CHAR" property="lastIntDate"/>
+        <result column="SYS_ID" jdbcType="VARCHAR" property="sysId"/>
+        <result column="BDEP_ID" jdbcType="VARCHAR" property="bdepId"/>
+        <result column="OPEN_DATE" jdbcType="CHAR" property="openDate"/>
+        <result column="OPEN_TIME" jdbcType="CHAR" property="openTime"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+    CUST_ID, SUB_ACCT_ID, CAP_TYPE, CURY_TYPE, ACCT_TYPE, ACCT_NAME, CUST_INFO, ACCT_STATUS, 
+    AVL_BAL, FRZ_BAL, ACCT_BAL, LAST_UPD_DATE, LAST_AVL_BAL, LAST_FRZ_BAL, TODAY_AVL_BAL, 
+    TODAY_FRZ_BAL, INT_BAL, LAST_INT_DATE, SYS_ID, BDEP_ID, OPEN_DATE, OPEN_TIME
+  </sql>
+
+    <select id="queryDtAcctInfo" resultMap="BaseResultMap"
+            parameterType="com.huifu.odin.dal.entity.DtAcctInfo">
+        select
+        <include refid="Base_Column_List"/>
+        from DT_ACCT_INFO
+        <where>
+            <if test="dtAcctInfo.custId !='' and dtAcctInfo.custId !=null">
+                and CUST_ID = #{dtAcctInfo.custId,jdbcType=VARCHAR}
+            </if>
+
+            <if test="dtAcctInfo.subAcctId != '' and dtAcctInfo.subAcctId != null">
+                and SUB_ACCT_ID = #{dtAcctInfo.subAcctId,jdbcType=VARCHAR}
+            </if>
+            <if test="dtAcctInfo.acctType != '' and dtAcctInfo.acctType != null">
+                and ACCT_TYPE = #{dtAcctInfo.acctType,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+</mapper>
